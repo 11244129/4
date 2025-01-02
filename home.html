@@ -18,20 +18,21 @@
             min-height: 100vh;
         }
         header {
-            background-color: #ffcccb;
-            color: #333;
+            background-image: url('qq.png');
+            color: #000000;
             text-align: center;
             padding: 2rem;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            background-size: cover;
         }
         header h1 {
             margin: 0;
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: bold;
         }
         header p {
             margin: 0.5rem 0 0;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
         }
         nav {
             background-color: #333;
@@ -52,7 +53,7 @@
             text-decoration: none;
             padding: 15px 25px;
             display: block;
-            font-size: 1rem;
+            font-size: 1.1rem;
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
@@ -64,17 +65,39 @@
             padding: 40px 20px;
             text-align: center;
         }
+        #dynamic-ad {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            max-width: 900px;  
+            margin: 20px auto;
+            overflow: hidden;
+            position: relative;
+            border-radius: 15px;
+        }
+        .ad-images {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+        #dynamic-ad img {
+            width: 100%;  
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+        }
         #intro {
-            margin-bottom: 40px;
+            margin-top: 40px;
             background-color: #fff;
-            border-radius: 10px;
+            border-radius: 15px;
             padding: 20px;
-            max-width: 800px;
+            max-width: 900px;  
             margin: 20px auto;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         #intro h2 {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             color: #333;
         }
         #intro p {
@@ -82,29 +105,11 @@
             color: #555;
             line-height: 1.8;
         }
-        #dynamic-ad {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            max-width: 800px;
-            margin: 20px auto;
-        }
-        #dynamic-ad img {
-            width: 30%;
-            height: auto;
-            border-radius: 10px;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-        #dynamic-ad img.active {
-            opacity: 1;
-        }
         footer {
             text-align: center;
             padding: 20px;
             background-color: #ffcccb;
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #333;
             border-top: 1px solid #ddd;
         }
@@ -113,46 +118,42 @@
         }
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             header p {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             nav ul li a {
-                font-size: 0.9rem;
+                font-size: 1rem;
                 padding: 10px 15px;
             }
             #intro h2 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             #intro p {
                 font-size: 1rem;
-            }
-            #dynamic-ad img {
-                width: 30%;
             }
         }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const images = document.querySelectorAll("#dynamic-ad img");
+            const adContainer = document.querySelector("#dynamic-ad .ad-images");
             let currentIndex = 0;
+            const totalImages = adContainer.children.length;
 
             function showNextImage() {
-                images[currentIndex].classList.remove("active");
-                currentIndex = (currentIndex + 1) % images.length;
-                images[currentIndex].classList.add("active");
+                currentIndex = (currentIndex + 1) % totalImages;
+                adContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
             }
 
-            images[currentIndex].classList.add("active");
-            setInterval(showNextImage, 3000);
+            setInterval(showNextImage, 3000); 
         });
     </script>
 </head>
 <body>
     <header>
-        <h1>歡迎來到吉伊卡哇購物網站</h1>
-        <p>提供最優質的吉伊卡哇商品，讓您的生活更添趣味！</p>
+        <h1>　　　　　　　　</h1>
+        <p>　　　　　　　　　　</p>
     </header>
     <nav>
         <ul>
@@ -162,24 +163,26 @@
         </ul>
     </nav>
     <main>
+        
+        <section id="dynamic-ad">
+            <div class="ad-images">
+                <img src="aas1.png" alt="聖誕限定">
+                <img src="ass2.png" alt="J聯盟足球">
+                <img src="ass3.png" alt="節分撒豆">
+            </div>
+        </section>
+
         <section id="intro">
             <h2>關於我們</h2>
-            <p>吉伊卡哇購物網站專注於售賣多樣化的吉伊卡哇相關商品，從收藏品到實用小物，應有盡有！</p>
+            <p>吉伊卡哇購物網站專注於售賣多樣化的吉伊卡哇相關商品，從收藏品到實用小物，應有盡有！讓您的生活更添趣味，盡在吉伊卡哇。</p>
         </section>
 
         <section id="intro">
             <h2>系列商品</h2>
-            <p>以下系列商品在商品列表中均有販售!</p>
-        </section>
-        <section id="dynamic-ad">   
-            <div class="ad-description">聖誕限定</div>
-            <img src="ad1.jpg" alt="聖誕限定">
-            <div class="ad-description">J聯盟足球</div>
-            <img src="ad2.jpg" alt="J聯盟足球">
-            <div class="ad-description">節分撒豆</div>
-            <img src="ad3.jpg" alt="節分撒豆">
+            <p>您所想像的系列商品在商品列表中均有販售，讓您一次擁有所有吉伊卡哇商品！</p>
         </section>
     </main>
+
     <footer>
         <p>&copy; 2024 吉伊卡哇購物網站 | 最棒的吉伊卡哇商品等著您</p>
     </footer>
